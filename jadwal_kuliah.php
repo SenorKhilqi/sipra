@@ -57,7 +57,7 @@ include 'includes/header.php';
                 <ul class="nav nav-tabs card-header-tabs" id="jadwalTabs" role="tablist">
                     <?php foreach ($days as $index => $day): ?>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link <?php echo ($index === 0) ? 'active' : ''; ?>" 
+                        <button class="nav-link <?php echo ($index === 0) ? 'active' : ''; ?> day-tab" 
                                 id="tab-<?php echo $day; ?>" 
                                 data-bs-toggle="tab" 
                                 data-bs-target="#content-<?php echo $day; ?>" 
@@ -74,6 +74,31 @@ include 'includes/header.php';
                     <?php endforeach; ?>
                 </ul>
             </div>
+            
+            <style>
+                /* Make day tabs have black text in light mode */
+                .nav-link.day-tab {
+                    color: #000000;
+                    font-weight: 500;
+                }
+                
+                /* Keep white text color in dark mode */
+                .dark-theme .nav-link.day-tab {
+                    color: #ffffff;
+                }
+                
+                /* Style for active tab */
+                .nav-link.day-tab.active {
+                    font-weight: 700;
+                    color: #0d6efd; /* Bootstrap primary color */
+                }
+                
+                /* Active tab in dark mode */
+                .dark-theme .nav-link.day-tab.active {
+                    color: #8bb9fe;
+                }
+            </style>
+
             <div class="card-body">
                 <div class="tab-content" id="jadwalTabsContent">
                     <?php foreach ($days as $index => $day): ?>
