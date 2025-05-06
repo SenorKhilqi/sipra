@@ -209,6 +209,39 @@ include 'includes/header.php';
             document.getElementById('delete_mk_name').textContent = this.getAttribute('data-nama');
         });
     });
+
+    // Initialize Bootstrap modals
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add button modal trigger
+        const addBtn = document.querySelector('button[data-bs-target="#addMataKuliahModal"]');
+        if (addBtn) {
+            addBtn.addEventListener('click', function() {
+                const modal = new bootstrap.Modal(document.getElementById('addMataKuliahModal'));
+                modal.show();
+            });
+        }
+
+        // Alternative initialization for all modals
+        const modalElements = document.querySelectorAll('.modal');
+        modalElements.forEach(modalElement => {
+            const modal = new bootstrap.Modal(modalElement);
+            const modalTriggers = document.querySelectorAll(`[data-bs-target="#${modalElement.id}"]`);
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    modal.show();
+                });
+            });
+        });
+
+        // Direct manual trigger for testing
+        const addMataKuliahButton = document.querySelector('button[data-bs-target="#addMataKuliahModal"]');
+        if (addMataKuliahButton) {
+            addMataKuliahButton.onclick = function() {
+                const myModal = new bootstrap.Modal(document.getElementById('addMataKuliahModal'));
+                myModal.show();
+            };
+        }
+    });
 </script>
 
 <?php
